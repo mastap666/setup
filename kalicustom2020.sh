@@ -153,7 +153,8 @@ echo "ntpdate"
 apt-get install ntpdate -y
 #apt-get install terminator -y
 echo "tools"
-mkdir /tools
+cd /
+mkdir tools
 
 #update tools
 # nmap --script-updatedb
