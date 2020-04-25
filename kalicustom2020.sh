@@ -96,6 +96,12 @@ echo "setxkbmap $keyboard" >>~/.bashrc
 # set wallpaper and disable lockscreen
 cd /usr/share/backgrounds/
 wget https://raw.githubusercontent.com/mastap666/scripts/master/wallpaper/wp1.jpg
+xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set /usr/share/backgrounds/wp1.jpg
+xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/last-image --set /usr/share/backgrounds/wp1.jpg
+xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/last-single-image --set /usr/share/backgrounds/wp1.jpg
+xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/image-path --set /usr/share/backgrounds/wp1.jpg
+xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/last-image --set /usr/share/backgrounds/wp1.jpg
+xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/last-single-image --set /usr/share/backgrounds/wp1.jpg
 xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace0/last-image --set /usr/share/backgrounds/wp1.jpg
 xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace1/last-image --set /usr/share/backgrounds/wp1.jpg
 
