@@ -147,8 +147,8 @@ apt-get install terminator -y
 mkdir /tools
 
 #update tools
-nmap --script-updatedb
-searchsploit -u
+# nmap --script-updatedb
+# searchsploit -u
 
 
 #Github Clones
