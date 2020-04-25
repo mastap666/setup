@@ -149,7 +149,7 @@ echo "Default tools will be installed...
 sleep 3
 apt-get update
 apt-get install ntpdate -y
-apt-get install terminator -y
+#apt-get install terminator -y
 mkdir /tools
 
 #update tools
