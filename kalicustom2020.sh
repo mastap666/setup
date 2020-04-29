@@ -96,14 +96,14 @@ echo "setxkbmap $keyboard" >>~/.bashrc
 # set wallpaper and disable lockscreen
 cd /usr/share/backgrounds/
 wget https://raw.githubusercontent.com/mastap666/scripts/master/wallpaper/wp1.jpg
-su kali -m -c 'kali xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set /usr/share/backgrounds/wp1.jpg
-kali xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/last-image --set /usr/share/backgrounds/wp1.jpg
-kali xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/last-single-image --set /usr/share/backgrounds/wp1.jpg
-kali xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/image-path --set /usr/share/backgrounds/wp1.jpg
-kali xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/last-image --set /usr/share/backgrounds/wp1.jpg
-kali xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/last-single-image --set /usr/share/backgrounds/wp1.jpg
-kali xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace0/last-image --set /usr/share/backgrounds/wp1.jpg
-kali xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace1/last-image --set /usr/share/backgrounds/wp1.jpg'
+su kali -m -c 'xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set /usr/share/backgrounds/wp1.jpg
+xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/last-image --set /usr/share/backgrounds/wp1.jpg
+xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/last-single-image --set /usr/share/backgrounds/wp1.jpg
+xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/image-path --set /usr/share/backgrounds/wp1.jpg
+xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/last-image --set /usr/share/backgrounds/wp1.jpg
+xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/last-single-image --set /usr/share/backgrounds/wp1.jpg
+xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace0/last-image --set /usr/share/backgrounds/wp1.jpg
+xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace1/last-image --set /usr/share/backgrounds/wp1.jpg'
 
 
 #set new root password
@@ -138,34 +138,32 @@ change kali User password...
 			sleep 5
 			
 fi
-echo "
 
-"
 
 ##install tools
-#echo "Default tools will be installed...
-#----------------------------------
-#"
-#sleep 3
-#apt-get update
-#sleep 3
-#echo "ntpdate"
-#apt-get install ntpdate -y
-##apt-get install terminator -y
-#echo "tools"
-#cd /
+echo "
+
+
+Default tools will be installed...
+----------------------------------
+"
+sleep 3
+apt-get update
+sleep 3
+apt-get install ntpdate -y
+#apt-get install terminator -y
 #mkdir tools
-#
-##update tools
-## nmap --script-updatedb
-## searchsploit -u
-#
-#
-##Github Clones
-#if [ $git == "y" ]
-#		then 
-#			echo "
-#			
+
+#update tools
+# nmap --script-updatedb
+# searchsploit -u
+
+
+#Github Clones
+if [ $git == "y" ]
+		then 
+			echo "
+			
 Github Tools will be cloned...
 ----------------------------------
 
@@ -173,7 +171,7 @@ Github Tools will be cloned...
 sleep 3
 
 #mkdir /tools/gitclone
-cd /tools/gitclone
+#cd /tools/gitclone
 git clone https://github.com/OCSAF/freevulnsearch.git 
 git clone https://github.com/OCSAF/freevulnaudit.git
 git clone https://github.com/OCSAF/free-open-auditor.git
