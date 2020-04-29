@@ -151,33 +151,32 @@ sleep 3
 apt-get update
 sleep 3
 apt-get install ntpdate -y
-#apt-get install terminator -y
-#mkdir tools
+apt-get install terminator -y
+mkdir -p /tools
 
 #update tools
-# nmap --script-updatedb
-# searchsploit -u
+nmap --script-updatedb
+searchsploit -u
 
 
 #Github Clones
 if [ $git == "y" ]
 		then 
-			echo "
-			
+			echo "			
 Github Tools will be cloned...
 ----------------------------------
 
 "
 sleep 3
 
-#mkdir /tools/gitclone
-#cd /tools/gitclone
+mkdir -p /tools/gitclone
+cd /tools/gitclone
 git clone https://github.com/OCSAF/freevulnsearch.git 
 git clone https://github.com/OCSAF/freevulnaudit.git
 git clone https://github.com/OCSAF/free-open-auditor.git
 git clone https://github.com/OCSAF/freepwnedcheck.git
 
-
+fi
 
 
 if [ $tools == "y" ]
@@ -209,88 +208,86 @@ tool installations completed...
 
 
 
-##set ntp server
-#echo "
-#
-#Set ntp server...
-#-----------------
-#"
-#ntpdate $ntp
-#sleep 3
-#
-## change hostname
-#if [ $hs == y ]
-#		then
-#			echo "
-#
-#Set new hostname...
-#-----------------
-#"
-#			echo $hostname >/etc/hostname
-#			echo "
-#			
-#Your new hostname is $hostname
-#
-#"
-#
-#fi
-#
-## enable ssh with root access
-#if [ $ssh == "y" ]
-#        then
-#		echo "
-#
-#Setup SSH Server...
-#-------------------
-#
-#"
-#			echo SSH will be enabled...
-#			echo "PubkeyAuthentication yes" >>/etc/ssh/sshd_config
-#			systemctl enable ssh
-#			systemctl start ssh
-#
-#fi
-#echo "
-#"
-#sleep 3
-## set timezone
-#timedatectl set-timezone $timezone
-#
-#
-#
-##DNS Quad9 Server
-#if [ $dns == y ]
-#		then
-#				echo "Quad9 DNS will be configured... "
-#				echo "nameserver 9.9.9.9" >/etc/resolv.conf
-#				
-#fi
-#
-## update kali
-#if [ $update == y ]
-#        then
-#                echo "Updates will be installed, please hold the line..."
-#				sleep 3
-#                apt-get update -y && apt-get upgrade -y
-#				
-#	elif [ $rolling == y ]
-#		then
-#				echo "Rolling updates will be installed..."
-#				apt-get dist-upgrade -y
-#                
-#	else
-#                echo "No updates will be installed..."
-#
-#fi
-#
-#
+#set ntp server
+echo "
+
+Set ntp server...
+-----------------
+"
+ntpdate $ntp
+sleep 3
+
+# change hostname
+if [ $hs == y ]
+		then
+			echo "
+
+Set new hostname...
+-----------------
+"
+			echo $hostname >/etc/hostname
+			echo "
+			
+Your new hostname is $hostname
+
+"
+
+fi
+
+# enable ssh with root access
+if [ $ssh == "y" ]
+        then
+		echo "
+
+Setup SSH Server...
+-------------------
+
+"
+			echo SSH will be enabled...
+			echo "PubkeyAuthentication yes" >>/etc/ssh/sshd_config
+			systemctl enable ssh
+			systemctl start ssh
+
+fi
+echo "
+"
+sleep 3
+# set timezone
+timedatectl set-timezone $timezone
+
+
+
+#DNS Quad9 Server
+if [ $dns == y ]
+		then
+				echo "Quad9 DNS will be configured... "
+				echo "nameserver 9.9.9.9" >/etc/resolv.conf
+				
+fi
+
+# update kali
+if [ $update == y ]
+        then
+                echo "Updates will be installed, please hold the line..."
+				sleep 3
+                apt-get update -y && apt-get upgrade -y
+				
+	elif [ $rolling == y ]
+		then
+				echo "Rolling updates will be installed..."
+				apt-get dist-upgrade -y
+                
+	else
+                echo "No updates will be installed..."
+
+fi
+
+
 echo "
 
 
 
 Script is complete.... Thank you for using!
-
-
 
 your machine will reboot in 1 minute....
 
