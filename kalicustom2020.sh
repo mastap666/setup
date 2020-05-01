@@ -71,8 +71,8 @@ Expand Config Filest${cOFF}
 echo "alias ls='ls -la --color=auto'" >>/etc/bash.bashrc
 echo "alias ls='ls -la --color=auto'" >>~/.bashrc
 # expand the vimrc
-echo "set number" >>/etc/vimrc
-echo "set bg=dark" >>/etc/vimrc
+echo "set number" >>/etc/vim/vimrc
+echo "set bg=dark" >>/etc/vim/vimrc
 echo -e "
 ${yON}...done${cOFF}
 "
@@ -83,8 +83,8 @@ echo -e "${yON}<----------------------------------------------------->
 Set Keyboard Layout${cOFF}
 "
 setxkbmap ${keyboard}
-echo "setxkbmap $keyboard" >>/etc/bash.bashrc
-echo "setxkbmap $keyboard" >>~/.bashrc
+echo "setxkbmap ${_keyboard}" >>/etc/bash.bashrc
+echo "setxkbmap ${_keyboard}" >>~/.bashrc
 echo ""
 echo Keyboard Layout changed to ${_keyboard}
 echo ""
