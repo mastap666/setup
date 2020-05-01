@@ -387,6 +387,9 @@ fi
 
 echo "
 
+
+"
+
 ## Run functions ##
 
 funcKeylayout
