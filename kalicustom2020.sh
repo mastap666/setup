@@ -84,16 +84,13 @@ funcKeylayout(){
 
 funcSetwallpaper(){
 	# set wallpaper
-	cd /usr/share/backgrounds/
-	wget https://raw.githubusercontent.com/mastap666/scripts/master/wallpaper/wp1.jpg
-	su kali -m -c 'xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set /usr/share/backgrounds/wp1.jpg
-	xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/last-image --set /usr/share/backgrounds/wp1.jpg
-	xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/last-single-image --set /usr/share/backgrounds/wp1.jpg
-	xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/image-path --set /usr/share/backgrounds/wp1.jpg
-	xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/last-image --set /usr/share/backgrounds/wp1.jpg
-	xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor1/last-single-image --set /usr/share/backgrounds/wp1.jpg
-	xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace0/last-image --set /usr/share/backgrounds/wp1.jpg
-	xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVirtual1/workspace1/last-image --set /usr/share/backgrounds/wp1.jpg'
+	cd /usr/share/backgrounds/kali
+	wget https://raw.githubusercontent.com/mastap666/oscripts/master/wallpaper/wp1.png
+	mv kali-logo-16x9.png kali-logo-16x9.org
+	mv kali-light-16x9.png kali-light-16x9.org
+	cp wp1.png kali-logo-16x9.png
+	cp wp1.png kali-light-16x9.png
+
 }
 
 funcSetpw(){
