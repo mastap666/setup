@@ -197,6 +197,7 @@ funcCustomtools(){
 	tool installations completed...
 
 	"
+	fi
 }
 
 funcSetntp(){
