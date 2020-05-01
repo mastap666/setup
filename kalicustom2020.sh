@@ -64,225 +64,298 @@ yON='\e[33m'	  #yellow color ON
 #### Functions #####
 
 funcConfExpand(){
-	# expand the bashrc
-	echo "alias ls='ls -la --color=auto'" >>/etc/bash.bashrc
-
-	# expand the vimrc
-	echo "set number" >>/etc/vimrc
-	echo "set bg=dark" >>/etc/vimrc
+echo -e "${yON}<----------------------------------------------------->
+Expand Config Filest${cOFF}
+"
+# expand the bashrc
+echo "alias ls='ls -la --color=auto'" >>/etc/bash.bashrc
+echo "alias ls='ls -la --color=auto'" >>~/.bashrc
+# expand the vimrc
+echo "set number" >>/etc/vimrc
+echo "set bg=dark" >>/etc/vimrc
+echo -e "
+${yON}...done${cOFF}
+"
 }
 
 funcKeylayout(){
-	# set keyboard layout
-	setxkbmap ${keyboard}
-	echo "setxkbmap $keyboard" >>/etc/bash.bashrc
-	echo ""
-	echo Keyboard Layout changed to ${_keyboard}
-	echo ""
-	sleep 2
+echo -e "${yON}<----------------------------------------------------->
+Set Keyboard Layout${cOFF}
+"
+setxkbmap ${keyboard}
+echo "setxkbmap $keyboard" >>/etc/bash.bashrc
+echo "setxkbmap $keyboard" >>~/.bashrc
+echo ""
+echo Keyboard Layout changed to ${_keyboard}
+echo ""
+sleep 2
+echo -e "
+${yON}...done${cOFF}
+"
 }
 
 funcSetwallpaper(){
-	# set wallpaper
-	cd /usr/share/backgrounds/kali
-	wget https://raw.githubusercontent.com/mastap666/oscripts/master/wallpaper/wp1.png
-	mv kali-logo-16x9.png kali-logo-16x9.org
-	mv kali-light-16x9.png kali-light-16x9.org
-	cp wp1.png kali-logo-16x9.png
-	cp wp1.png kali-light-16x9.png
-
+echo -e "${yON}<----------------------------------------------------->
+Set Wallpaper${cOFF}
+"
+cd /usr/share/backgrounds/kali
+wget https://raw.githubusercontent.com/mastap666/oscripts/master/wallpaper/wp1.png
+mv kali-logo-16x9.png kali-logo-16x9.org
+mv kali-light-16x9.png kali-light-16x9.org
+cp wp1.png kali-logo-16x9.png
+cp wp1.png kali-light-16x9.png
+echo -e "
+${yON}...done${cOFF}
+"
 }
 
 funcSetpw(){
-	#set new root password
-	if [ ${_rootpw} == y ]
-			then
-				echo "
+echo -e "${yON}<----------------------------------------------------->
+Set new Passwords${cOFF}
+"
+#set new root password
+if [ ${_rootpw} == y ]
+		then
+			echo "
 
-	change root password...
-	-------------------
+change root password...
+-------------------
 
-	"
-				passwd root
-				sleep 5
-				
-	fi
-	echo "
+"
+			passwd root
+			sleep 5
+			
+fi
+echo "
 
-	"
+"
 
-	#set new kali password
-	if [ ${_kalipw} == y ]
-			then
-				echo "
+#set new kali password
+if [ ${_kalipw} == y ]
+		then
+			echo "
 
-	change kali User password...
-	-------------------
+change kali User password...
+-------------------
 
-	"
-				passwd kali
-				sleep 5
-				
-	fi
-
+"
+			passwd kali
+			sleep 5
+			
+fi
+echo -e "
+${yON}...done${cOFF}
+"
 }
 
 funcDefaulttools(){
-	##install tools
-	echo "
+echo -e "${yON}<----------------------------------------------------->
+Install default tools${cOFF}
+"
+echo "
 
-	Default tools will be installed...
-	----------------------------------
-	"
-	sleep 3
-	apt-get update
-	sleep 3
-	apt-get install ntpdate -y
-	apt-get install terminator -y
-	apt-get install tshark -y
-	mkdir -p /tools
-
+Default tools will be installed...
+----------------------------------
+"
+sleep 3
+apt-get update
+sleep 3
+apt-get install ntpdate -y
+apt-get install terminator -y
+apt-get install tshark -y
+mkdir -p /tools
+echo -e "
+${yON}...done${cOFF}
+"
 }
 
 funcUpdatetools(){
-	#update tools
-	nmap --script-updatedb
-	searchsploit -u
+echo -e "${yON}<----------------------------------------------------->
+Update NMAP and Searchsploit${cOFF}
+"
+nmap --script-updatedb
+searchsploit -u
+echo -e "
+${yON}...done${cOFF}
+"
 }
 
 funcGithub(){
-	#Github Clones
-	if [ ${_git} == "y" ]
-			then 
-				echo "			
-	Github Tools will be cloned...
-	----------------------------------
+echo -e "${yON}<----------------------------------------------------->
+Clone Github tools${cOFF}
+"
+if [ ${_git} == "y" ]
+		then 
+			echo "			
+Github Tools will be cloned...
+----------------------------------
 
-	"
+"
 
-	mkdir -p /tools/gitclone
-	cd /tools/gitclone
-	git clone https://github.com/OCSAF/freevulnsearch.git 
-	git clone https://github.com/OCSAF/freevulnaudit.git
-	git clone https://github.com/OCSAF/free-open-auditor.git
-	git clone https://github.com/OCSAF/freepwnedcheck.git
+mkdir -p /tools/gitclone
+cd /tools/gitclone
+git clone https://github.com/OCSAF/freevulnsearch.git 
+git clone https://github.com/OCSAF/freevulnaudit.git
+git clone https://github.com/OCSAF/free-open-auditor.git
+git clone https://github.com/OCSAF/freepwnedcheck.git
 
-	fi
+fi
+echo -e "
+${yON}...done${cOFF}
+"
 }
 
 funcCustomtools(){
-	if [ ${_tools} == "y" ]
-			then 
-				echo "
-				
-	Custom tools will be installed...
-	----------------------------------
+echo -e "${yON}<----------------------------------------------------->
+Install Custom tools${cOFF}
+"
+if [ ${_tools} == "y" ]
+		then 
+			echo "
+			
+Custom tools will be installed...
+----------------------------------
 
-				"
-				sleep 2
-				#div_tools
-				apt-get install ipcalc -y
-				apt-get install mtr -y
-				apt-get install mtr-tiny -y
-				apt-get install tor -y
-				apt-get install openvas -y
-				#freevulnserach
-				apt-get install geoip-bin -y
-				apt-get install jq -y
-				#freevulnaudit
-				apt-get install xlstproc -y
-				apt-get install wkhtmltopdf -y
-				echo "
-				
-	tool installations completed...
+			"
+			sleep 2
+			#div_tools
+			apt-get install ipcalc -y
+			apt-get install mtr -y
+			apt-get install mtr-tiny -y
+			apt-get install tor -y
+			apt-get install openvas -y
+			#freevulnserach
+			apt-get install geoip-bin -y
+			apt-get install jq -y
+			#freevulnaudit
+			apt-get install xlstproc -y
+			apt-get install wkhtmltopdf -y
+			echo "
+			
+tool installations completed...
 
-	"
-	fi
+"
+
+fi
+echo -e "
+${yON}...done${cOFF}
+"
 }
 
 funcSetntp(){
-	#set ntp server
-	echo "
+echo -e "${yON}<----------------------------------------------------->
+Set NTP Server${cOFF}
+"
+echo "
 
-	Set ntp server...
-	-----------------
-	"
-	ntpdate ${_ntp}
-	sleep 3
+Set ntp server...
+-----------------
+"
+ntpdate ${_ntp}
+sleep 3
+echo -e "
+${yON}...done${cOFF}
+"
 }
 
 funcSethostname(){
-	# change hostname
-	if 	[ ${_hs} == y ]
-			then
-				read -p "Enter new hostname: " -e _hostname
-	fi
+echo -e "${yON}<----------------------------------------------------->
+Set new Hostname${cOFF}
+"
+if 	[ ${_hs} == y ]
+		then
+			read -p "Enter new hostname: " -e _hostname
+fi
 
-	echo "
-	Set new hostname...
-	-----------------
-	"
-	echo ${_hostname} >/etc/hostname
-	echo "
-				
-	Your new hostname is ${_hostname}
+echo "
+Set new hostname...
+-----------------
+"
+echo ${_hostname} >/etc/hostname
+echo "
+			
+Your new hostname is ${_hostname}
 
-	"
-	sleep 3
+"
+sleep 3
+echo -e "
+${yON}...done${cOFF}
+"
 }
 
 funcSSHenable(){
-	# enable ssh with root access
-	if [ ${_ssh} == "y" ]
-			then
-			echo "
+echo -e "${yON}<----------------------------------------------------->
+Enable SSH Server${cOFF}
+"
+if [ ${_ssh} == "y" ]
+		then
+		echo "
 
-	Setup SSH Server...
-	-------------------
+Setup SSH Server...
+-------------------
 
-	"
-				echo SSH will be enabled...
-				echo "PubkeyAuthentication yes" >>/etc/ssh/sshd_config
-				systemctl enable ssh
-				systemctl start ssh
+"
+			echo SSH will be enabled...
+			echo "PubkeyAuthentication yes" >>/etc/ssh/sshd_config
+			systemctl enable ssh
+			systemctl start ssh
 
-	fi
+fi
+echo -e "
+${yON}...done${cOFF}
+"
 }
 
 funcTimezone(){
-	# set timezone
-	timedatectl set-timezone ${_timezone}
+echo -e "${yON}<----------------------------------------------------->
+Set Timezone${cOFF}
+"
+# set timezone
+timedatectl set-timezone ${_timezone}
+echo -e "
+${yON}...done${cOFF}
+"
 }
 
 funcDNSchange(){
-	#DNS Quad9 Server
-	if [ ${_dns} == y ]
-			then
-					echo "Quad9 DNS will be configured... "
-					echo "nameserver 9.9.9.9" >/etc/resolv.conf
-					
-	fi
+echo -e "${yON}<----------------------------------------------------->
+Set Quad9 DNS Server${cOFF}
+"
+if [ ${_dns} == y ]
+		then
+				echo "Quad9 DNS will be configured... "
+				echo "nameserver 9.9.9.9" >/etc/resolv.conf
+				
+fi
+echo -e "
+${yON}...done${cOFF}
+"
 }
 
 funcUpdate(){
-	# update kali
-	if [ ${_update} == y ]
-			then
-					echo "Updates will be installed, this takes some time...
-					"
-					apt-get update -y && apt-get upgrade -y
-					
-		elif [ ${_rolling} == y ]
-			then
-					echo "Rolling updates will be installed...
-					"
-					apt-get dist-upgrade -y
-					
-		else
-					echo "No updates will be installed...
-					"
+echo -e "${yON}<----------------------------------------------------->
+Install Kali Updates${cOFF}
+"
+if [ ${_update} == y ]
+		then
+				echo "Updates will be installed, this takes some time...
+				"
+				apt-get update -y && apt-get upgrade -y
+				
+	elif [ ${_rolling} == y ]
+		then
+				echo "Rolling updates will be installed...
+				"
+				apt-get dist-upgrade -y
+				
+	else
+				echo "No updates will be installed...
+				"
 
-	fi
+fi
+echo -e "
+${yON}...done${cOFF}
+"
 }
 
 
@@ -314,106 +387,22 @@ fi
 
 echo "
 
+## Run functions ##
 
-" 
-echo -e "${yON}<----------------------------------------------------->
-Set Keyboard Layout${cOFF}
-"
 funcKeylayout
-echo -e "
-${yON}...done${cOFF}
-"
-echo -e "${yON}<----------------------------------------------------->
-Set new Hostname${cOFF}
-"
 funcSethostname
-echo -e "
-${yON}...done${cOFF}
-"
-echo -e "${yON}<----------------------------------------------------->
-Set new Passwords${cOFF}
-"
 funcSetpw
-echo -e "
-${yON}...done${cOFF}
-"
-echo -e "${yON}<----------------------------------------------------->
-Expand Config Filest${cOFF}
-"
 funcConfExpand
-echo -e "
-${yON}...done${cOFF}
-"
-echo -e "${yON}<----------------------------------------------------->
-Set Wallpaper${cOFF}
-"
 funcSetwallpaper
-echo -e "
-${yON}...done${cOFF}
-"
-echo -e "${yON}<----------------------------------------------------->
-Install default tools${cOFF}
-"
 funcDefaulttools
-echo -e "
-${yON}...done${cOFF}
-"
-#echo -e "${yON}<----------------------------------------------------->
-#Update NMAP and Searchsploit${cOFF}
-#"
 #funcUpdatetools
-#echo -e "
-#${yON}...done${cOFF}
-#"
-echo -e "${yON}<----------------------------------------------------->
-Clone Github tools${cOFF}
-"
 funcGithub
-echo -e "
-${yON}...done${cOFF}
-"
-echo -e "${yON}<----------------------------------------------------->
-Install Custom tools${cOFF}
-"
 funcCustomtools
-echo -e "
-${yON}...done${cOFF}
-"
-echo -e "${yON}<----------------------------------------------------->
-Set NTP Server${cOFF}
-"
 funcSetntp
-echo -e "
-${yON}...done${cOFF}
-"
-echo -e "${yON}<----------------------------------------------------->
-Enable SSH Server${cOFF}
-"
 funcSSHenable
-echo -e "
-${yON}...done${cOFF}
-"
-echo -e "${yON}<----------------------------------------------------->
-Set Timezone${cOFF}
-"
 funcTimezone
-echo -e "
-${yON}...done${cOFF}
-"
-echo -e "${yON}<----------------------------------------------------->
-Set Quad9 DNS Server${cOFF}
-"
 funcDNSchange
-echo -e "
-${yON}...done${cOFF}
-"
-echo -e "${yON}<----------------------------------------------------->
-Install Kali Updates${cOFF}
-"
 funcUpdate
-echo -e "
-${yON}...done${cOFF}
-"
 
 
 
