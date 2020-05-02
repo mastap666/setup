@@ -398,7 +398,7 @@ funcSetpw
 funcConfExpand
 funcSetwallpaper
 funcDefaulttools
-#funcUpdatetools
+funcUpdatetools
 funcGithub
 funcCustomtools
 funcSetntp
